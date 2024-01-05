@@ -10,10 +10,12 @@
 
     #include <stdio.h>
     #include <stdlib.h>
+    #include <string.h>
+    #include <unistd.h>
 
 typedef struct hash_value_s {
     int key;
-    int value;
+    char *value;
     struct hash_value_s *next;
 }hash_value_t;
 
@@ -36,5 +38,8 @@ int ht_delete(hashtable_t *ht, char *key);
 char *ht_search(hashtable_t *ht, char *key);
 void ht_dump(hashtable_t *ht);
 int my_strlen(char const *str);
+int my_putstr(char const *str);
+int my_put_nbr(int nb);
+void my_putchar(char c);
 
 #endif /* HASHTABLE_H */
