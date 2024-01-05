@@ -7,7 +7,11 @@
 
 SRC 	= 	hash.c	\
 			my_strlen.c	\
-			create_ht.c
+			create_ht.c\
+			my_put_nbr.c\
+			my_putstr.c\
+			dump.c\
+			my_putchar.c\
 
 OBJ	=	$(SRC:.c=.o)
 
