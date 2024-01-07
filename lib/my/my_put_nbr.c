@@ -21,4 +21,5 @@ int my_put_nbr(int nb)
     } else {
         my_putchar(nb2 + 48);
     }
+    return 0;
 }
