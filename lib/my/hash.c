@@ -23,6 +23,18 @@ int my_compute_square_root(int nb)
     return (tour);
 }
 
+int size_nb(int nb)
+{
+    int temp = nb;
+    int i = 0;
+
+    while (temp > 0) {
+        temp /= 10;
+        i ++;
+    }
+    return i;
+}
+
 int hash(char *key, int len)
 {
     int size = my_strlen(key);
@@ -37,10 +49,14 @@ int hash(char *key, int len)
     }
     end *= end;
     mod = ((end / 10) % 10) + 1;
-    if (mod > 5 && size != 0)
+    if (mod > 5 && size != 0) {
         end /= (size * mod);
+    }
+    size = size_nb(end);
     if (size > 0 && size < 5)
         end *= (my_compute_square_root(end) * mod);
+    else if (size == 5)
+        end *= len;
     else
         end /= (mod * size * 2);
     return end;
@@ -48,26 +64,10 @@ int hash(char *key, int len)
 
 int main(void)
 {
-    hashtable_t *ht = new_hashtable(&hash, 3);
+    hashtable_t *ht = new_hashtable(&hash, 0);
 
-    ht_insert(ht, "Vision", "./Documents/Tournament/Modules/Vision");
-    ht_insert(ht, "Kratos", "./Trash/Hollidays_Pics/.secret_folder/kratos.ai");
-    ht_insert(ht, "<3", "+33 6 31 45 61 23 71");
-    ht_insert(ht, "pumpkin", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "layout", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "symptom", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "suggest", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "stop", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "agency", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "football", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "lend", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "drop", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "buy", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "passion", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "regard", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "medieval", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "ewaggerate", "+33 7 51 49 01 38 11");
-    ht_insert(ht, "dilemma", "+33 7 51 49 01 38 11");
+    ht_insert(ht, "avion", "./Documents/Tournament/Modules/Vision");
+    ht_insert(ht, "zvion", "./Trash/Hollidays_Pics/.secret_folder/kratos.ai");
     ht_dump(ht);
     return 0;
 }
