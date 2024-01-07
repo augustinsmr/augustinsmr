@@ -12,7 +12,8 @@ SRC 	= 	hash.c	\
 			my_putstr.c\
 			dump.c\
 			my_putchar.c\
-			insert_ht.c
+			insert_ht.c	\
+			my_strcpy.c
 
 OBJ	=	$(SRC:.c=.o)
 
