@@ -55,9 +55,13 @@ int store(int hashed_key, int len_ht)
 int ht_insert(hashtable_t *ht, char *key, char *value)
 {
     int len_ht = retrieve_length(ht);
-    int hashed_key = ht->hash(key, len_ht);
-    int storing_place = store(hashed_key, len_ht);
+    int hashed_key;
+    int storing_place;
 
+    if (len_ht == 0)
+        return 0;
+    hashed_key = ht->hash(key, len_ht);
+    storing_place = store(hashed_key, len_ht);
     for (int i = 0; i < len_ht; i ++) {
         if (ht[i].index == storing_place) {
             append_node(&(ht[i]), hashed_key, value);
