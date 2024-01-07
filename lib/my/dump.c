@@ -17,10 +17,13 @@ void ht_dump(hashtable_t *ht)
         my_putstr("[");
         my_put_nbr(ht[i].index);
         my_putstr("]:\n");
-        while(tmp != NULL) {
+        while (tmp != NULL) {
+            write(1, "> ", 2);
             my_put_nbr(tmp->key);
+            write(1, " - ", 3);
             my_putstr(tmp->value);
             tmp = tmp->next;
+            write(1, "\n", 1);
         }
         i++;
     }
