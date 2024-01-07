@@ -7,7 +7,7 @@
 
 #include "../../include/hashtable.h"
 
-hash_value_t *new_node()
+hash_value_t *new_node(void)
 {
     hash_value_t *new = malloc(sizeof(hash_value_t *));
 
@@ -19,6 +19,9 @@ hashtable_t *new_hashtable(int (*hash)(char *, int), int len)
 {
     hashtable_t *ht = malloc((len + 1) * sizeof(hashtable_t));
 
+    ht[0].hash = hash;
+    ht[0].index = 0;
+    ht[0].ht_values = NULL;
     for (int i = 0; i < len; i ++) {
         ht[i].hash = hash;
         ht[i].index = i;
