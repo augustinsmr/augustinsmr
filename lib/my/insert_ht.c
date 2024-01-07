@@ -27,6 +27,7 @@ void append_node(hashtable_t *ht, int key, char *value)
     new->key = key;
     if (ht->ht_values == NULL) {
         ht->ht_values = new;
+        new->next = NULL;
     } else {
         new->next = temp;
         ht->ht_values = new;
