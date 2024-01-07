@@ -36,6 +36,7 @@ void delete_hashtable(hashtable_t *ht);
 int ht_insert(hashtable_t *ht, char *key, char *value);
 int ht_delete(hashtable_t *ht, char *key);
 char *ht_search(hashtable_t *ht, char *key);
+int retrieve_length(hashtable_t *ht);
 void ht_dump(hashtable_t *ht);
 int my_strlen(char const *str);
 int my_putstr(char const *str);
