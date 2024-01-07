@@ -35,6 +35,16 @@ int size_nb(int nb)
     return i;
 }
 
+int hash_next(int size, int end, int mod, int len)
+{
+    if (size > 0 && size < 5)
+        return end * (my_compute_square_root(end) * mod);
+    else if (size == 5)
+        return end * len;
+    else
+        return end / (mod * size * 2);
+}
+
 int hash(char *key, int len)
 {
     int size = my_strlen(key);
@@ -49,22 +59,15 @@ int hash(char *key, int len)
     }
     end *= end;
     mod = ((end / 10) % 10) + 1;
-    if (mod > 5 && size != 0) {
+    if (mod > 5 && size != 0)
         end /= (size * mod);
-    }
     size = size_nb(end);
-    if (size > 0 && size < 5)
-        end *= (my_compute_square_root(end) * mod);
-    else if (size == 5)
-        end *= len;
-    else
-        end /= (mod * size * 2);
-    return end;
+    return hash_next(size, end, mod, len);
 }
 
 int main(void)
 {
-    hashtable_t *ht = new_hashtable(&hash, 0);
+    hashtable_t *ht = new_hashtable(&hash, 2);
 
     ht_insert(ht, "avion", "./Documents/Tournament/Modules/Vision");
     ht_insert(ht, "zvion", "./Trash/Hollidays_Pics/.secret_folder/kratos.ai");
