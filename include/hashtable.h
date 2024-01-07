@@ -39,6 +39,7 @@ char *ht_search(hashtable_t *ht, char *key);
 void ht_dump(hashtable_t *ht);
 int my_strlen(char const *str);
 int my_putstr(char const *str);
+char *my_strcpy(char *dest, char const *src);
 int my_put_nbr(int nb);
 void my_putchar(char c);
 
