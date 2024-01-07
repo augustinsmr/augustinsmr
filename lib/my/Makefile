@@ -19,7 +19,7 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	libhashtable.a
 
-CFLAGS += -g
+CFLAGS += -g -Wall -Wextra
 
 all:	libhashtable.a clean
 
