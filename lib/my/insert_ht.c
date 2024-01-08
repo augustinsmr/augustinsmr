@@ -58,15 +58,17 @@ int ht_insert(hashtable_t *ht, char *key, char *value)
     int len_ht = retrieve_length(ht);
     int hashed_key;
     int storing_place;
+    int error = 84;
 
     if (len_ht == 0)
-        return 0;
+        return 84;
     hashed_key = ht->hash(key, len_ht);
     storing_place = store(hashed_key, len_ht);
     for (int i = 0; i < len_ht; i ++) {
         if (ht[i].index == storing_place) {
             append_node(&(ht[i]), hashed_key, value);
+            error = 0;
         }
     }
-    return 0;
+    return error;
 }
