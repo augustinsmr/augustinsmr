@@ -14,7 +14,8 @@ SRC 	= 	hash.c	\
 			my_putchar.c\
 			insert_ht.c	\
 			my_strcpy.c	\
-			search_ht.c
+			search_ht.c	\
+			ht_delete.c
 
 OBJ	=	$(SRC:.c=.o)
 
