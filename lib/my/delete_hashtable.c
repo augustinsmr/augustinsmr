@@ -21,6 +21,7 @@ void delete_hashtable(hashtable_t *ht)
             free(tmp);
             tmp = tmp2;
         }
+        i ++;
     }
     free(tmp);
     free(tmp2);
