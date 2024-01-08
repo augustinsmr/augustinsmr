@@ -64,13 +64,3 @@ int hash(char *key, int len)
     size = size_nb(end);
     return hash_next(size, end, mod, len);
 }
-
-int main(void)
-{
-    hashtable_t *ht = new_hashtable(&hash, 2);
-
-    ht_insert(ht, "avion", "./Documents/Tournament/Modules/Vision");
-    ht_insert(ht, "zvion", "./Trash/Hollidays_Pics/.secret_folder/kratos.ai");
-    ht_dump(ht);
-    return 0;
-}
