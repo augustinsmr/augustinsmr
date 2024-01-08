@@ -13,7 +13,6 @@ SRC 	= 	hash.c	\
 			dump.c\
 			my_putchar.c\
 			delete_hashtable.c\
-			insert.c\
 			insert_ht.c	\
 			my_strcpy.c	\
 			search_ht.c	\
