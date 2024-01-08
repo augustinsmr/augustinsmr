@@ -26,7 +26,7 @@ CFLAGS += -g -Wall -Wextra
 all:	libhashtable.a clean
 
 libhashtable.a:	$(OBJ)
-	gcc -o $(NAME) $(OBJ)
+	ar rc -o $(NAME) $(OBJ)
 	mv $(NAME) ../..
 
 clean:
