@@ -20,7 +20,7 @@ hashtable_t *new_hashtable(int (*hash)(char *, int), int len)
     hashtable_t *ht = malloc((len + 1) * sizeof(hashtable_t));
 
     ht[0].hash = hash;
-    ht[0].index = 0;
+    ht[0].index = -1;
     ht[0].ht_values = NULL;
     for (int i = 0; i < len; i ++) {
         ht[i].hash = hash;
