@@ -39,7 +39,7 @@ int ht_delete(hashtable_t *ht, char *key)
     int hashed_key;
     int i = 0;
 
-    if (len_ht == 0)
+    if (len_ht == 0 || key == NULL)
         return 84;
     hashed_key = ht->hash(key, len_ht);
     while (ht[i].index != -1) {
