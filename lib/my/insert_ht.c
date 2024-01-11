@@ -60,7 +60,7 @@ int ht_insert(hashtable_t *ht, char *key, char *value)
     int storing_place;
     int error = 84;
 
-    if (len_ht == 0)
+    if (len_ht == 0 || key == NULL || value == NULL)
         return 84;
     hashed_key = ht->hash(key, len_ht);
     storing_place = store(hashed_key, len_ht);
