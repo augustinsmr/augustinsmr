@@ -34,6 +34,31 @@ void append_node(hashtable_t *ht, int key, char *value)
     }
 }
 
+void change_node(hash_value_t *ht, int hashed_key, char *value)
+{
+    int i = 0;
+    hash_value_t *temp = ht;
+
+    while (temp != NULL) {
+        if (ht->key == hashed_key) {
+            free(ht->value);
+            ht->value = malloc(sizeof(char) * (my_strlen(ht->value) + 1));
+            my_strcpy(ht->value, value);
+            return;
+        }
+        temp = temp->next;
+        i ++;
+    }
+}
+
+void insert_next(hashtable_t *ht, int check, int hashed_key, char *value)
+{
+    if (check == 1)
+        append_node((ht), hashed_key, value);
+    else
+        change_node((*ht).ht_values, hashed_key, value);
+}
+
 int ht_insert(hashtable_t *ht, char *key, char *value)
 {
     int len_ht = retrieve_length(ht);
@@ -47,7 +72,8 @@ int ht_insert(hashtable_t *ht, char *key, char *value)
     storing_place = hashed_key % len_ht;
     for (int i = 0; i < len_ht; i ++) {
         if (ht[i].index == storing_place) {
-            append_node(&(ht[i]), hashed_key, value);
+            insert_next(&ht[i], (ht_search(ht, key) == NULL),
+                hashed_key, value);
             error = 0;
         }
     }

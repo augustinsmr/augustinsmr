@@ -27,8 +27,8 @@ char *ht_search(hashtable_t *ht, char *key)
     int i = 0;
     char *value;
 
-    if (len_ht == 0)
-        return 0;
+    if (len_ht == 0 || key == NULL)
+        return NULL;
     hashed_key = ht->hash(key, len_ht);
     while (ht[i].index != -1) {
         value = search_linked_list(ht[i].ht_values, hashed_key);
@@ -36,5 +36,5 @@ char *ht_search(hashtable_t *ht, char *key)
             return value;
         i ++;
     }
-    return "not found";
+    return NULL;
 }
