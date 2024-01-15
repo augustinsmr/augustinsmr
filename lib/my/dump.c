@@ -14,14 +14,14 @@ void ht_dump(hashtable_t *ht)
 
     while (ht[i].index != -1) {
         tmp = ht[i].ht_values;
-        my_putstr("[");
+        write(1, "[", 1);
         my_put_nbr(ht[i].index);
-        my_putstr("]:\n");
+        write(1, "]:\n", 3);
         while (tmp != NULL) {
             write(1, "> ", 2);
             my_put_nbr(tmp->key);
             write(1, " - ", 3);
-            my_putstr(tmp->value);
+            write(1, tmp->value, my_strlen(tmp->value));
             tmp = tmp->next;
             write(1, "\n", 1);
         }
