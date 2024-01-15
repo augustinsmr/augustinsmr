@@ -34,25 +34,6 @@ void append_node(hashtable_t *ht, int key, char *value)
     }
 }
 
-int store(int hashed_key, int len_ht)
-{
-    int temp = hashed_key;
-    int i = 0;
-    int boup = 1;
-
-    while (temp > 0) {
-        temp /= 10;
-        i ++;
-    }
-    temp = hashed_key;
-    for (int j = 0; j < i; j ++) {
-        temp /= 10;
-        if (j % 2 == 0 && temp % 10 != 0)
-            boup *= (temp % 10);
-    }
-    return (hashed_key - boup) % len_ht;
-}
-
 int ht_insert(hashtable_t *ht, char *key, char *value)
 {
     int len_ht = retrieve_length(ht);
@@ -63,7 +44,7 @@ int ht_insert(hashtable_t *ht, char *key, char *value)
     if (len_ht == 0 || key == NULL || value == NULL)
         return 84;
     hashed_key = ht->hash(key, len_ht);
-    storing_place = store(hashed_key, len_ht);
+    storing_place = hashed_key % len_ht;
     for (int i = 0; i < len_ht; i ++) {
         if (ht[i].index == storing_place) {
             append_node(&(ht[i]), hashed_key, value);
