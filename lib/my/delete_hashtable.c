@@ -13,6 +13,8 @@ void delete_hashtable(hashtable_t *ht)
     hash_value_t *tmp = NULL;
     hash_value_t *tmp2 = NULL;
 
+    if (ht == NULL)
+        return;
     while (ht[i].index != -1) {
         tmp = ht[i].ht_values;
         while (tmp != NULL) {
