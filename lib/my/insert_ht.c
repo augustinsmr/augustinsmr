@@ -11,6 +11,8 @@ int retrieve_length(hashtable_t *ht)
 {
     int i = 0;
 
+    if (ht == NULL)
+        return 84;
     while (ht[i].index != -1)
         i ++;
     return i;
@@ -66,7 +68,7 @@ int ht_insert(hashtable_t *ht, char *key, char *value)
     int storing_place;
     int error = 84;
 
-    if (len_ht == 0 || key == NULL || value == NULL)
+    if (len_ht == 0 || ht == NULL || key == NULL || value == NULL)
         return 84;
     hashed_key = ht->hash(key, len_ht);
     storing_place = hashed_key % len_ht;

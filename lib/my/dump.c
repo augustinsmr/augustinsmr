@@ -12,6 +12,8 @@ void ht_dump(hashtable_t *ht)
     int i = 0;
     hash_value_t *tmp;
 
+    if (ht == NULL)
+        return;
     while (ht[i].index != -1) {
         tmp = ht[i].ht_values;
         write(1, "[", 1);

@@ -27,7 +27,7 @@ char *ht_search(hashtable_t *ht, char *key)
     int i = 0;
     char *value;
 
-    if (len_ht == 0 || key == NULL)
+    if (len_ht == 0 || ht == NULL || key == NULL)
         return NULL;
     hashed_key = ht->hash(key, len_ht);
     while (ht[i].index != -1) {
