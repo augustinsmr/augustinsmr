@@ -11,6 +11,8 @@ hashtable_t *new_hashtable(int (*hash)(char *, int), int len)
 {
     hashtable_t *ht = malloc((len + 1) * sizeof(hashtable_t));
 
+    if (len <= 0)
+        return NULL;
     ht[0].hash = hash;
     ht[0].index = -1;
     ht[0].ht_values = NULL;
