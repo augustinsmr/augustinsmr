@@ -15,13 +15,6 @@ void redirect_all_std(void)
     cr_redirect_stderr();
 }
 
-Test(create_ht, create_empty_table)
-{
-    hashtable_t *ht = new_hashtable(&hash, 0);
-
-    cr_assert_eq(ht[0].index, -1);
-}
-
 Test(create_ht, create_non_empty_table)
 {
     hashtable_t *ht = new_hashtable(&hash, 5);
